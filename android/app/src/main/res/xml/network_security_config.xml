@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">api.open-meteo.com</domain>
+    </domain-config>
+    
+    <!-- Base configuration for all other domains -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <!-- Trust preinstalled CAs -->
+            <certificates src="system"/>
+        </trust-anchors>
+    </base-config>
+    
+    <!-- Debug configuration (only for debug builds) -->
+    <debug-overrides>
+        <trust-anchors>
+            <!-- Trust user added CAs while debuging -->
+            <certificates src="user"/>
+            <certificates src="system"/>
+        </trust-anchors>
+    </debug-overrides>
+</network-security-config>
